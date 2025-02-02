@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket         = "${var.backend_bucket}-${var.env}-${var.project_id}"
+    bucket         = "terraform-backend-dev-prj-udp-dev-qic"
     prefix         = "state"
   }
 }

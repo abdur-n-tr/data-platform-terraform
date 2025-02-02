@@ -1,4 +1,3 @@
-project_id = "your-dev-project-id"
-location   = "Dammam"
-region     = "me-central2"
+project_id = "prj-udp-dev-qic"
+location   = "me-central2"
 env        = "dev"

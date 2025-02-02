@@ -30,8 +30,3 @@ variable "env" {
   description = "The environment (e.g., dev, prod)."
   type        = string
 }
-
-variable "region" {
-  description = "The region where resources will be deployed."
-  type        = string
-}

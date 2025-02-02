@@ -1,0 +1,20 @@
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.*
+ 
+# Ignore Terraform plan files
+*.tfplan
+ 
+# Ignore .terraform directory (contains modules, plugins, and other Terraform caches)
+.terraform/
+ 
+# Ignore Terraform lock files
+terraform.lock.hcl
+ 
+# Ignore provider and module binaries
+*.bin
+*.zip
+*.tar.gz
+*.tar
+*.tar.xz
+*.dmg
