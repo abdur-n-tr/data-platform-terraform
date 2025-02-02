@@ -9,7 +9,7 @@
 .terraform/
  
 # Ignore Terraform lock files
-terraform.lock.hcl
+.terraform.lock.hcl
  
 # Ignore provider and module binaries
 *.bin
