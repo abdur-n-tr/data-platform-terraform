@@ -1,0 +1,22 @@
+[
+    {
+      "name": "task_id",
+      "type": "INT64",
+      "mode": "REQUIRED"
+    },
+    {
+      "name": "task_name",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "due_date",
+      "type": "DATE",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "project_id",
+      "type": "INT64",
+      "mode": "NULLABLE"
+    }
+  ]
