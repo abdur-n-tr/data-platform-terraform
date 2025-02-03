@@ -49,12 +49,15 @@ variable "tables" {
   description = "A map of tables to create in the dataset. Each table should have a schema file and optional configurations."
   type = map(object({
     schema_file       = string
-    time_partitioning = object({
-      type  = string
-      field = string
-    })
-    clustering        = list(string)
-    expiration_time   = number
+    time_partitioning = optional(
+      object({
+        type  = string
+        field = optional(string)
+      })
+    )
+    clustering        = optional(list(string))
+    expiration_time   = optional(number)
+    deletion_protection = optional(bool, true)
   }))
   default = {}
 }

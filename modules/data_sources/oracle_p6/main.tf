@@ -15,11 +15,12 @@ module "extract_bucket" {
 }
 
 module "bigquery" {
-  source = "../../modules/bigquery"
+  source = "../../bigquery"
 
   dataset_id  = "oracle_p6_dataset"
   project_id  = var.project_id
   location    = var.location
+  delete_contents_on_destroy = true
   dataset_description = "Dataset for Oracle P6 data."
   dataset_labels = {
     env  = "dev"
@@ -42,15 +43,16 @@ module "bigquery" {
       }
       clustering      = ["project_id"]
       expiration_time = null
+      deletion_protection = false
     }
     tasks = {
       schema_file = "${path.module}/${var.bq_schemas}/tasks.json"
+      deletion_protection = false
       time_partitioning = {
         type  = "DAY"
-        field = "due_date"
       }
-      clustering      = ["task_id"]
-      expiration_time = null
+      # clustering      = ["task_id"]
+      # expiration_time = null
     }
   }
 }

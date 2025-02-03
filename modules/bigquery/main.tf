@@ -18,13 +18,24 @@ resource "google_bigquery_table" "tables" {
   table_id   = each.key
   project    = var.project_id
   labels     = var.table_labels
+  deletion_protection = each.value.deletion_protection
 
   schema = file(each.value.schema_file)
 
+  dynamic "time_partitioning" {
+    for_each = each.value.time_partitioning != null ? [1] : []
+    content {
+      type  = each.value.time_partitioning.type
+      field = each.value.time_partitioning.field
+    }
+  }
+
+  /*
   time_partitioning {
     type  = each.value.time_partitioning.type
     field = each.value.time_partitioning.field
   }
+  */
 
   clustering = each.value.clustering
 
