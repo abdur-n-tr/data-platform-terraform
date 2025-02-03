@@ -48,11 +48,20 @@ module "bigquery" {
     tasks = {
       schema_file = "${path.module}/${var.bq_schemas}/tasks.json"
       deletion_protection = false
-      time_partitioning = {
-        type  = "DAY"
-      }
-      # clustering      = ["task_id"]
-      # expiration_time = null
     }
+  }
+}
+
+module "artifact_registry_docker" {
+  source = "../../artifact_registry"
+
+  location      = var.location
+  repository_id = "oracle-p6-${var.env}-${var.project_id}"
+  description   = "Docker repository for Oracle P6 images"
+  format        = "DOCKER"
+  labels = {
+    env  = var.env
+    type = "docker"
+    source = "p6"
   }
 }

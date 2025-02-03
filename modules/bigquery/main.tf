@@ -30,13 +30,6 @@ resource "google_bigquery_table" "tables" {
     }
   }
 
-  /*
-  time_partitioning {
-    type  = each.value.time_partitioning.type
-    field = each.value.time_partitioning.field
-  }
-  */
-
   clustering = each.value.clustering
 
   expiration_time = each.value.expiration_time
