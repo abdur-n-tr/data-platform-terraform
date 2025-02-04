@@ -57,18 +57,20 @@ variable "container_memory" {
 
 variable "container_name" {
   description = "Name of the container."
-  type        = optional(string)
+  type        = string
+  default     = null
 }
 
 variable "task_timeout" {
-  description = "Max duration a task can run before being killed (e.g., '3.5s')"
+  description = "Max duration a task (in seconds) can run before being killed (e.g., '3.5s')"
   type        = string
   default     = "60s"
 }
 
 variable "task_service_account" {
   description = "IAM service account email for the task"
-  type        = optional(string)
+  type        = string
+  default     = null
 }
 
 variable "task_max_retries" {

@@ -1,4 +1,4 @@
-resource "google_cloud_run_job" "job" {
+resource "google_cloud_run_v2_job" "job" {
   name     = var.job_name
   location = var.location
   deletion_protection = var.deletion_protection
@@ -9,6 +9,9 @@ resource "google_cloud_run_job" "job" {
     labels      = var.labels
 
     template {
+      timeout = var.task_timeout
+      service_account = var.task_service_account
+      max_retries = var.task_max_retries
       containers {
         image = var.image
         name  = var.container_name        
@@ -26,9 +29,6 @@ resource "google_cloud_run_job" "job" {
           }
         }
       }
-      timeout = var.task_timeout
-      service_account = var.service_account
-      max_retries = var.max_retries
     }
   }
 }

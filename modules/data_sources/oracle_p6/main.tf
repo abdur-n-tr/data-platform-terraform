@@ -90,8 +90,8 @@ module "p6_api_password" {
   replica_locations = [var.location]
 }
 
-module "cloud_run_job" {
-  source = "./modules/cloud_run_job"
+module "p6_cloud_run_job" {
+  source = "../../cloud_run_job"
 
   job_name    = "p6-cloud-run-job"
   location    = var.location
@@ -101,8 +101,8 @@ module "cloud_run_job" {
   deletion_protection = false
   container_cpu = "1"
   container_memory = "1Gi"
-  task_timeout = "24h"
-  max_retries = 1
+  task_timeout = "86400s"
+  task_max_retries = 1
 
   labels = {
     env  = var.env
