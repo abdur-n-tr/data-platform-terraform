@@ -12,4 +12,8 @@ resource "google_secret_manager_secret" "secret" {
       }
     }
   }
+
+  lifecycle {
+    ignore_changes = [secret_id]  # Ignore changes to the secret data
+  }
 }
